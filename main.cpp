@@ -108,13 +108,13 @@ int main() {
 
         for (int i = 0; i < total_images; ++i) {
             std::string image_path = "mnist_inference/test_images/" + std::to_string(i) + ".png";
-            
+            //Preprocess
             Ort::Value input_tensor = create_tensor_from_image(env, image_path);
             std::vector<Ort::Value> input_tensors;
             input_tensors.push_back(std::move(input_tensor));
-
+            //Inference
             auto output_tensors = session.Run(Ort::RunOptions{nullptr}, input_names_c.data(), input_tensors.data(), input_tensors.size(), output_names_c.data(), output_names_c.size());
-            
+            //Postprocess
             const float* raw_output = output_tensors[0].GetTensorMutableData<float>();
             
             int predicted_class = 0;
@@ -148,4 +148,5 @@ int main() {
     std::cout << "--- Chuong trinh ket thuc. ---" << std::endl;
     return 0;
 }
+
 
