@@ -59,7 +59,7 @@ int main() {
     std::cout << "--- Bat dau chuong trinh suy luan MNIST ---" << std::endl;
     
     try {
-        // 1. Set up C++ development environment
+        // 1. Initialize ONNX Runtime Environment and Session Options
         std::cout << "1. Khoi tao ONNX Runtime..." << std::endl;
         Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "onnx_inference");
         Ort::SessionOptions session_options;
@@ -148,3 +148,4 @@ int main() {
     std::cout << "--- Chuong trinh ket thuc. ---" << std::endl;
     return 0;
 }
+
